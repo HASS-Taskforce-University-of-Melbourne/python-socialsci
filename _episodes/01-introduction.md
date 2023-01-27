@@ -84,63 +84,53 @@ development more interactive. Since its inception, the scope of the project
 has expanded to include **Ju**lia, **Pyt**hon, and **R**, so the name was changed to "Jupyter"
 as a reference to these core languages. Today, Jupyter supports even more
 languages, but we will be using it only for Python code. Specifically, we will
-be using **Jupyter notebooks**, which allows us to easily take notes about
+be using **Jupyter notebooks**, which allow us to easily take notes about
 our analysis and view plots within the same document where we code. This
 facilitates sharing and reproducibility of analyses, and the notebook interface
-is easily accessible through any web browser. Jupyter notebooks are started
-from the terminal using the following command:
+is easily accessible through any web browser.
 
-~~~
-$ jupyter notebook
-~~~
-{: .language-bash}
+### Google colaboratory
+For this workshop we will be trialling using Jupyter noteboks through [Google Colaboratory (or Colab)]
+(https://colab.research.google.com/#). Colab allows you to write and execute Python from your browser, 
+without needing to install Python on your computer or any other configuration. You will, however, need 
+a Google account. If you do not already have one, you can [create one](https://support.google.com/accounts/answer/27441) 
+using your existing email address, or getting a new gmail address if you prefer.
 
-Your browser should start automatically and look
-something like this:
-
-![Jupyter_notebook_list](../fig/Python_jupyter_6.png)
-
-When you create a notebook from the *New* option, the new notebook will be displayed in a new 
-browser tab and look like this.
-
-![Jupyter_notebook](../fig/Python_jupyter_7.png)
-
-Initially the notebook has no name other than 'Untitled'. If you click on 'Untitled' you will be 
+Once signed in to a Google account, you can select File on the menu bar and choose "New notebook". 
+Initially the notebook is named 'Untitled'. If you click on 'Untitled' you will be 
 given the option of changing the name to whatever you want.
 
-The notebook is divided into **cells**. Initially there will be a single input cell marked by `In 
-[ ]:`.
+The notebook is divided into **cells**. Initially there will be a single input cell, with a play icon on the left:
+
+![Google_colab](../fig/Colab1.png)
 
 You can type Python code directly into the cell. You can split the code across
 several lines as needed. Unlike the REPL we looked at before, the code is not
 interpreted line by line. To interpret the code in a cell, you can click the
-*Run* button in the toolbar or from the *Cell* menu option, or use keyboard
-shortcuts (e.g., <kbd>Shift</kbd>+<kbd>Return</kbd>). All of the code in that cell will then be
-executed.
+*play* button on the left of the cell or use keyboard
+shortcuts (e.g., <kbd>Ctrl</kbd>+<kbd>Enter</kbd>). All of the code in that cell will then be
+executed. The results are shown immediately below the cell.
 
-The results are shown in a separate `Out [1]:` cell immediately below. A new input
-cell (`In [ ]:`) is created for you automatically.
+![Colab_result](../fig/Colab2.png)
 
-![Jupyter_notebook_cell](../fig/Python_jupyter_8.png)
-
-When a cell is run, it is given a number along with the corresponding output
-cell. If you have a notebook with many cells in it, you can run the cells in any
+When a cell is run, it is given a number that replaces the play symbol. 
+If you have a notebook with many cells in it, you can run the cells in any
 order and also run the same cell many times. The number on the left-hand side of
 the input cells increments, so you can always tell the order in which they were
-run. For example, a cell marked `In [5]:` was the fifth cell run in the sequence.
+run. For example, a cell marked `[5]:` was the fifth cell run in the sequence.
 
 Although there is an option to do so on the toolbar, you do not have to manually
-save the notebook. This is done automatically by the Jupyter system.
+save the notebook. This is done automatically by Colab.
 
-Not only are the contents of the `In [ ]:` cells saved, but so are the `Out [ ]:` cells.
+Not only are the contents of the cells saved, but so is the output.
 This allows you to create complete documents with both your code and the output
-of the code in a single place.  You can also change the cell type from
-Python code to Markdown using the *Cell > Cell Type* option. [**Markdown**](https://en.wikipedia.org/wiki/Markdown) is
+of the code in a single place.  To add a [**Markdown**](https://en.wikipedia.org/wiki/Markdown) 
+cell, use the "+Text" button below the main menu bar. Markdown is
 a simple formatting system which allows you to create documentation for your
 code, again all within the same notebook structure.
 
 The notebook itself is stored as specially-formatted text file with an `.ipynb` 
-extension. These files can be opened and run by others with Jupyter installed. This allows you to 
-share your code inputs, outputs, and
+extension. These files can be opened and run by others through Google Colab, or anyone with 
+Jupyter installed. This allows you to share your code inputs, outputs, and
 Markdown documentation with others. You can also export the notebook to HTML, PDF, and
 many other formats to make sharing even easier.
