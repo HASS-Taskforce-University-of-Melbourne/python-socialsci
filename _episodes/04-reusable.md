@@ -92,85 +92,91 @@ print(get_item_count(items_str = items_owned, sep=';'))
 
 > ## Volume of a cube
 >
-> 1. Write a function definition to calculate the volume of a cuboid. The function requires three parameters: height (`h`), width (`w`),
-> and length (`len`); and returns the volume.
+> 1. Write a function definition to create an identifier for each survey participant. 
+> The function requires three parameters: `first_name`, `surname`, and their six-digit staff ID number (`id`); and returns an identifier 
+> formed by the last letter of the first name, the two middle numbers of the staff ID, and the last letter of the surname.
 >
-> 2. Suppose that in addition to the volume I also wanted to calculate the surface area and the sum of all of the edges. Would I (or should I) have three separate functions or could I write a single function to provide all three values together?
+> 2. Suppose that in addition to the identifier you also wanted to generate a username that each participant could use to log into a 
+> platform where you will display their results, formed by their first name initial plus the whole surname, all in lowercase; 
+> and also return their full name as one string. 
+> Would you (or should you) have three separate functions or could you write a single function to provide all three values together?
 >
 > > ## Solution
-> > 1. A function to calculate the volume of a cuboid could be:
+> > 1. A function to calculate the unique identifier as described in the exercise could be:
 > > 
 > > ~~~
-> > def calculate_vol_cuboid(h, w, len):
+> > def generate_identifier(first_name, surname, id):
 > >     """
-> >     Calculates the volume of a cuboid.
-> >     Takes in h, w, and len that represent height, width, and length of the cube, and returns the volume.
+> >     Generates an identifier formed by: the last letter of the first name, the two middle numbers of the staff ID, and the length of their surname.
+> >     Takes in first_name, surname, and id; and returns the identifier.
 > >     """
-> >     volume = h * w * len
-> >     return volume
+> >     identifier = first_name[-1] + id[2:3] + len(surname)
+> >     return identifier
 > > ~~~
 > > {: .language-python}
+> >
 > > 2. It depends. As a rule-of-thumb, functions should __do one thing and one thing only, and do it well.__
-> > If we always have to calculate these three pieces of information together, the 'one thing' could be
-> > 'calculate the volume, surface area, and sum of all edges of a cube'. In that case, our function could look like this:
+> > If you always need these three pieces of information together, the 'one thing' could be
+> > 'for each participant, generate an identifier, username, and full name'. In that case, your function could look like this:
 > >
 > > ~~~
 > > # Method 1 - single function
-> > def calculate_cuboid_metrics(h, w, len):
+> > def generate_user_attributes(first_name, surname, id):
 > >     """
-> >     Calculates information about a cuboid defined by the dimensions h(eight), w(idth), and len(gth).
-> > 
-> >     Returns the volume, surface area, and sum of edges of the cuboid.
+> >     Generates attributes needed for survey participant.
+> >     Takes in first_name, surname, and id; and returns an identifier, username, and full name.
 > >     """
-> >     volume = h * w * len
-> >     surface_area = 2 * (h * w + h * len + len * w)
-> >     edges = 4 * (h + w + len)
-> >     return volume, surface_area, edges
+> >     identifier = first_name[-1] + id[2:3] + len(surname)
+> >     username = (first_name[0] + surname).lower()
+> >     full_name = first_name + " " + surname
+> >     return identifier, username, full_name
 > > ~~~
 > > {: .language-python}
 > >
-> > It may be better, however, to break our function down: one for each piece of information we are
-> > calculating. Our functions would look like this:
+> > It may be better, however, to break your function down: one for each piece of information you are
+> > generating. Your functions could look like this:
 > > ~~~
 > > # Method 2 - separate functions
-> > def calc_volume_cuboid(h, w, len):
+> > def gen_identifier(first_name, surname, id):
 > >     """
-> >     Calculates the volume of a cuboid defined by the dimensions h(eight), w(idth), and len(gth).
+> >     Generates an identifier formed by: the last letter of the first name, the two middle numbers of the staff ID, and the length of their surname.
+> >     Takes in first_name, surname, and id; and returns the identifier.
 > >     """
-> >     volume = h * w * len
-> >     return volume
+> >     identifier = first_name[-1] + id[2:3] + len(surname)
+> >     return identifier
 > > 
 > > 
-> > def calc_surface_area_cuboid(h, w, len):
+> > def gen_username(first_name, surname):
 > >     """
-> >     Calculates the surface area of a cuboid defined by the dimensions h(eight), w(idth), and len(gth).
+> >     Generates an username formed by: their first name initial plus the whole surname, all in lowercase.
+> >     Takes in first_name and surname, and returns the username.
 > >     """   
-> >     surface_area = 2 * (h * w + h * len + len * w)
-> >     return surface_area
+> >     username = (first_name[0] + surname).lower()
+> >     return username
 > > 
 > > 
-> > def calc_sum_of_edges_cuboid(h, w, len):
+> > def display_full_name(first_name, surname):
 > >     """
-> >     Calculates the sum of edges of a cuboid defined by the dimensions h(eight), w(idth), and len(gth).
+> >     Displays the participant's full name.
+> >     Takes in first_name and surname, and returns the full name.
 > >     """   
-> >     sum_of_edges = 4 * (h + w + len)
-> >     return sum_of_edges
+> >     full_name = first_name + " " + surname
+> >     return full_name
 > > ~~~
 > > {: .language-python}
 > > 
-> > We could then rewrite our first function that calculates all metrics:
+> > We could then rewrite our first function that returns all attributes needed:
 > > ~~~
-> > def calc_cuboid_metrics(h, w, len):
+> > def gen_attributes(first_name, surname, id):
 > >     """
-> >     Calculates information about a cuboid defined by the dimensions h(eight), w(idth), and len(gth).
-> > 
-> >     Returns the volume, surface area, and sum of edges of the cuboid.
+> >     Generates attributes needed for survey participant.
+> >     Takes in first_name, surname, and id; and returns an identifier, username, and full name.
 > >     """
-> >     volume = calc_volume_cuboid(h, w, len)
-> >     surface_area = calc_surface_area_cuboid(h, w, len)
-> >     edges = calc_sum_of_edges_cuboid(h, w, len)
+> >     identifier = gen_identifier(first_name, surname, id)
+> >     username = gen_username(first_name, surname)
+> >     full_name = display_full_name(first_name, surname)
 > > 
-> >     return volume, surface_area, edges
+> >     return identifier, username, full_name
 > > ~~~
 > > {: .language-python}
 > >
