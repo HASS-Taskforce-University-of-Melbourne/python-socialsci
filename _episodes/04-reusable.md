@@ -90,7 +90,7 @@ print(get_item_count(items_str = items_owned, sep=';'))
 ~~~
 {: .output}
 
-> ## Volume of a cube
+> ## Exercise
 >
 > 1. Write a function definition to create an identifier for each survey participant. 
 > The function requires three parameters: `first_name`, `surname`, and their six-digit staff ID number (`id`); and returns an identifier 
