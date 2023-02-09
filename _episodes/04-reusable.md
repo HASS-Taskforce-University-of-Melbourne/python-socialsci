@@ -110,7 +110,7 @@ print(get_item_count(items_str = items_owned, sep=';'))
 > >     Generates an identifier formed by: the last letter of the first name, the two middle numbers of the staff ID, and the length of their surname.
 > >     Takes in first_name, surname, and id; and returns the identifier.
 > >     """
-> >     identifier = first_name[-1] + id[2:3] + len(surname)
+> >     identifier = first_name[-1] + id[2:4] + str(len(surname))
 > >     return identifier
 > > ~~~
 > > {: .language-python}
@@ -126,7 +126,7 @@ print(get_item_count(items_str = items_owned, sep=';'))
 > >     Generates attributes needed for survey participant.
 > >     Takes in first_name, surname, and id; and returns an identifier, username, and full name.
 > >     """
-> >     identifier = first_name[-1] + id[2:3] + len(surname)
+> >     identifier = first_name[-1] + id[2:4] + str(len(surname))
 > >     username = (first_name[0] + surname).lower()
 > >     full_name = first_name + " " + surname
 > >     return identifier, username, full_name
@@ -142,7 +142,7 @@ print(get_item_count(items_str = items_owned, sep=';'))
 > >     Generates an identifier formed by: the last letter of the first name, the two middle numbers of the staff ID, and the length of their surname.
 > >     Takes in first_name, surname, and id; and returns the identifier.
 > >     """
-> >     identifier = first_name[-1] + id[2:3] + len(surname)
+> >     identifier = first_name[-1] + id[2:4] + str(len(surname))
 > >     return identifier
 > > 
 > > 
